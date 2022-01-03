@@ -1,25 +1,8 @@
-<%= form_with(model: message) do |form| %>
-  <% if message.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(message.errors.count, "error") %> prohibited this message from being saved:</h2>
+<%= form_with(model: message, local: true) do |form| %>
+  <%= form.hidden_field :room_id,value: room.id %>
 
-      <ul>
-        <% message.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :content %>
-    <%= form.text_area :content %>
+  <div class="input-group mb2">
+    <%= form.text_field :content, class: 'form-contro mr-2' %>
   </div>
-
-
-    <%= form.hidden_field :room_id,value: room.id %>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+    <%= form.submit 'add message', class: 'btn btn-primary mb-2'%>
 <% end %>

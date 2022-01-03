@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
     else
       @current_user = User.generate
       session[:user_id] = @current_user.id
-      @current_user
+      @current_user 
     end
   end
 end
